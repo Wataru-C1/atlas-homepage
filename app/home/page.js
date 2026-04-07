@@ -785,7 +785,9 @@ export default function HomePage() {
           {/* LINE */}
           <div style={{
             ...cardStyle,
-            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
             padding: "36px 24px",
           }}>
             <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--navy)" style={{ marginBottom: "16px" }}>
@@ -803,7 +805,6 @@ export default function HomePage() {
               style={{
                 width: "160px",
                 height: "160px",
-                margin: "0 auto",
                 borderRadius: "8px",
                 objectFit: "contain",
               }}
