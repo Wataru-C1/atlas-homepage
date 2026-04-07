@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+:root {
+  --navy: #1a2744;
+  --navy-light: #243352;
+  --navy-dark: #111b30;
+  --accent: #c9a96e;
+  --accent-light: #dfc89e;
+  --white: #f8f6f1;
+  --gray: #8a9ab5;
+  --gray-light: #c5cdd9;
+  --bg: #f5f3ee;
+  --text: #2c2c2c;
+  --text-light: #6b6b6b;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Noto Sans JP', 'Helvetica Neue', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
