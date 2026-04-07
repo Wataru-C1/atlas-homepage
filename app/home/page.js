@@ -102,6 +102,7 @@ const cardBody = {
 
 export default function HomePage() {
   const active = useScrollSpy(sections.map((s) => s.id));
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <div style={{ background: "var(--bg)" }}>
@@ -137,7 +138,8 @@ export default function HomePage() {
               ATLAS
             </span>
           </a>
-          <div style={{ display: "flex", gap: "28px" }}>
+          {/* Desktop nav */}
+          <div className="nav-desktop" style={{ display: "flex", gap: "28px" }}>
             {sections.slice(1).map((s) => (
               <a
                 key={s.id}
@@ -155,8 +157,64 @@ export default function HomePage() {
               </a>
             ))}
           </div>
+          {/* Hamburger button */}
+          <button
+            className="nav-hamburger"
+            onClick={() => setMenuOpen(!menuOpen)}
+            style={{
+              display: "none",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: "4px",
+            }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--white)" strokeWidth="1.5" strokeLinecap="round">
+              {menuOpen ? (
+                <><line x1="6" y1="6" x2="18" y2="18" /><line x1="6" y1="18" x2="18" y2="6" /></>
+              ) : (
+                <><line x1="4" y1="7" x2="20" y2="7" /><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="17" x2="20" y2="17" /></>
+              )}
+            </svg>
+          </button>
         </div>
+        {/* Mobile menu */}
+        {menuOpen && (
+          <div className="nav-mobile" style={{
+            background: "rgba(26,39,68,0.98)",
+            padding: "16px 24px 24px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "16px",
+            borderTop: "1px solid rgba(201,169,110,0.1)",
+          }}>
+            {sections.slice(1).map((s) => (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                onClick={() => setMenuOpen(false)}
+                style={{
+                  fontSize: "13px",
+                  letterSpacing: "2px",
+                  fontWeight: active === s.id ? 600 : 400,
+                  color: active === s.id ? "var(--accent)" : "var(--gray-light)",
+                  textDecoration: "none",
+                  padding: "4px 0",
+                }}
+              >
+                {s.label}
+              </a>
+            ))}
+          </div>
+        )}
       </nav>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .nav-desktop { display: none !important; }
+          .nav-hamburger { display: block !important; }
+        }
+      `}</style>
 
       {/* ─── Hero ─── */}
       <section id="top" style={{
